@@ -5,6 +5,7 @@
         <title>Admin</title>
     </head>
     <body>
+        <?php echo validation_errors(); ?>
         <?php echo (isset($error) ? $error : "") ; ?>
         <?php echo form_open('admin/checkDatabase'); ?><br>
             <label for='username'>Username</label>

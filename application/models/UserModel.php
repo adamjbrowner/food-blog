@@ -1,6 +1,6 @@
 <?php
 
-class UserModel extends CI_controller {
+class UserModel extends CI_model {
 
     public function __construct() {
         parent::__construct();
@@ -10,7 +10,7 @@ class UserModel extends CI_controller {
         $this->db
             ->from('users')
             ->where('username', $username)
-            ->where('password', $password)
+            ->where('password', md5($password))
             ->limit(1);
 
         $query = $this->db->get();

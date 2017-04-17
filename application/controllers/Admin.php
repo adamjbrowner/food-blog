@@ -6,12 +6,11 @@ class Admin extends CI_controller {
         parent::__construct();
         $this->load->model('UserModel');
         $this->load->helper('form');
-        session_start();
     }
 
     public function index() {
-        if (isset($_SESSION['logged_in'])) {
-            $data['username'] = $_SESSION['logged_in']['username'];
+        if ($this->session->logged_in) {
+            $data['username'] = $this->session->logged_in['username'];
             $this->load->view('admin/index', $data);
         } else {
             $this->load->view('admin/login');
@@ -28,15 +27,14 @@ class Admin extends CI_controller {
             foreach ($result as $row) {
                 $sessionArray['id'] = $row->id;
                 $sessionArray['username'] = $row->username;
-                $_SESSION['logged_in'] = $sessionArray;
+                $this->session->logged_in = $sessionArray;
             }
-            redirect('/admin/index');
+            redirect('admin/index');
         } else {
             $data['error'] = "Your username or password do not match";
             $this->load->view('admin/login', $data);
         }
     }
-
 }
 
 ?>
