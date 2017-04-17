@@ -5,7 +5,8 @@
         <title>Admin</title>
     </head>
     <body>
-        <?php echo form_open('user/login'); ?><br>
+        <?php echo (isset($error) ? $error : "") ; ?>
+        <?php echo form_open('admin/checkDatabase'); ?><br>
             <label for='username'>Username</label>
             <input type='input' name='username'/><br>
 

@@ -4,7 +4,6 @@ class UserModel extends CI_controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->database();
     }
 
     public function login($username, $password) {
