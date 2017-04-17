@@ -1,0 +1,5 @@
+.git
+application/config/*
+user_guide/
+vendor/
+*.log
